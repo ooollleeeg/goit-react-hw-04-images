@@ -8,20 +8,20 @@ import styles from './modal.module.scss';
 const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ children, close }) => {
-  const closeModal = ({ target, currentTarget, code }) => {
-    if (target === currentTarget || code === 'Escape') {
-      close();
-    }
-  };
-
   useEffect(() => {
+    const closeModal = ({ target, currentTarget, code }) => {
+      if (target === currentTarget || code === 'Escape') {
+        close();
+      }
+    };
+
     document.addEventListener('keydown', closeModal);
 
     return () => document.removeEventListener('keydown', closeModal);
-  }, [closeModal]);
+  }, [close]);
 
   return createPortal(
-    <div className={styles.overlay} onClick={closeModal}>
+    <div className={styles.overlay} onClick={close}>
       <div className={styles.modal}>{children}</div>
     </div>,
     modalRoot
