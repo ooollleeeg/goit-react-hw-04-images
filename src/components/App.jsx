@@ -1,16 +1,12 @@
-export const App = () => {
+import SearchImage from './SearchImage/SearchImage';
+
+import styles from './app.module.scss';
+
+function App() {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div className={styles.app}>
+      <SearchImage></SearchImage>
     </div>
   );
-};
+}
+export default App;
